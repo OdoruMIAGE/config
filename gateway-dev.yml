@@ -26,10 +26,10 @@ spring:
           uri: lb://UTILISATEUR/
           predicates:
             # On matche tout ce qui commence par /api/toto
-            - Path=/api/utilisateurs/**
+            - Path=/api/utilisateur/**
           filters:
             # On va réécrire l'URL pour enlever le /api/toto
-            - RewritePath=/api/utilisateurs(?<segment>/?.*), /$\{segment}
+            - RewritePath=/api/utilisateur(?<segment>/?.*), /$\{segment}
         #Service 2
         - id: creneau
           uri: lb://CRENEAU/
