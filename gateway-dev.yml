@@ -31,18 +31,26 @@ spring:
             # On va réécrire l'URL pour enlever le /api/toto
             - RewritePath=/api/utilisateurs(?<segment>/?.*), /$\{segment}
         #Service 2
-        #- id: creneau
-        #  uri: lb://COMPTE/
-        #  predicates:
-        #    - Path=/api/comptes/**
-        #  filters:
-            # On va réécrire l'URL pour enlever le /api/toto
-        #    - RewritePath=/api/comptes(?<segment>/?.*), /$\{segment}
+        - id: creneau
+          uri: lb://CRENEAU/
+          predicates:
+            - Path=/api/creneau/**
+          filters:
+          # On va réécrire l'URL pour enlever le /api/toto
+            - RewritePath=/api/creneau(?<segment>/?.*), /$\{segment}
         #Service 3
-        #- id: composite
-        #  uri: lb://COMPOSITE/
-        #  predicates:
-        #    - Path=/api/clientComptes/**
-        #  filters:
+        - id: badge
+          uri: lb://BADGE/
+          predicates:
+            - Path=/api/badge/**
+          filters:
             # On va réécrire l'URL pour enlever le /api/toto
-        #    - RewritePath=/api/clientComptes(?<segment>/?.*), /$\{segment}
+            - RewritePath=/api/badge(?<segment>/?.*), /$\{segment}
+          #Service 4
+          - id: statistique
+            uri: lb://STATISTIQUE/
+            predicates:
+              - Path=/api/statistique/**
+            filters:
+              # On va réécrire l'URL pour enlever le /api/toto
+              - RewritePath=/api/statistique(?<segment>/?.*), /$\{segment}
