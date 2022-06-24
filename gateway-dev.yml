@@ -47,10 +47,10 @@ spring:
             # On va réécrire l'URL pour enlever le /api/toto
             - RewritePath=/api/badge(?<segment>/?.*), /$\{segment}
           #Service 4
-          - id: statistique
-            uri: lb://STATISTIQUE/
-            predicates:
-              - Path=/api/statistique/**
-            filters:
-              # On va réécrire l'URL pour enlever le /api/toto
-              - RewritePath=/api/statistique(?<segment>/?.*), /$\{segment}
+        - id: statistique
+          uri: lb://STATISTIQUE/
+          predicates:
+            - Path=/api/statistique/**
+          filters:
+            # On va réécrire l'URL pour enlever le /api/toto
+            - RewritePath=/api/statistique(?<segment>/?.*), /$\{segment}
